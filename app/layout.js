@@ -1,7 +1,10 @@
 import './globals.css';
+import { getSiteUrl } from '../lib/site';
+
+const siteUrl = getSiteUrl();
 
 export const metadata = {
-  metadataBase: new URL('https://jcg.dev'),
+  metadataBase: new URL(siteUrl),
   title: 'Juan Cruz Gallardo — Full-Stack Developer',
   description:
     'Full-Stack Developer specializing in .NET backend, microservices and Flutter — 5+ years building production-grade systems for fintech and banking in Argentina.',
@@ -14,7 +17,7 @@ export const metadata = {
   openGraph: {
     title: 'Juan Cruz Gallardo — Full-Stack Developer',
     description: 'Building reliable backend systems for fintech and enterprise products.',
-    url: 'https://jcg.dev',
+    url: siteUrl,
     siteName: 'jcg.dev',
     type: 'website',
   },

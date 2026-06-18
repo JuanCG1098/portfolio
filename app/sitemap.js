@@ -1,7 +1,9 @@
+import { getSiteUrl } from '../lib/site';
+
 export default function sitemap() {
   return [
     {
-      url: 'https://jcg.dev',
+      url: getSiteUrl(),
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
