@@ -2,26 +2,192 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050505;
+  color: #F0EDE3;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* ─── Typography ─────────────────────────────────────── */
+.display {
+  font-size: clamp(3rem, 6.5vw, 5.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+  color: #F0EDE3;
+}
+
+.headline {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #F0EDE3;
+}
+
+.label-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(199, 154, 75, 0.55);
+}
+
+/* ─── Section rhythm ─────────────────────────────────── */
+.section-gap    { padding-top: 7.5rem;  padding-bottom: 7.5rem; }
+.section-gap-sm { padding-top: 5.5rem;  padding-bottom: 5.5rem; }
+.section-gap-lg { padding-top: 10rem;   padding-bottom: 10rem; }
+
+.section-divider { border-top: 1px solid rgba(199,154,75,0.08); }
+
+/* ─── Gold system ────────────────────────────────────── */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D6B16A 0%, #C79A4B 60%, #8A6630 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gradient text with a slow light sweep — hero headline only */
+.text-gold-shimmer {
+  background: linear-gradient(110deg, #8A6630 0%, #C79A4B 38%, #E8CD9A 50%, #C79A4B 62%, #8A6630 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-gold-shimmer { animation: none; }
+}
+
+/* ─── Cards ──────────────────────────────────────────── */
+.card-premium {
+  background: #0D0C0A;
+  border: 1px solid rgba(199,154,75,0.08);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-premium:hover {
+  border-color: rgba(199,154,75,0.20);
+  box-shadow: 0 0 30px rgba(199,154,75,0.04);
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(199,154,75,0.35);
+  border-radius: 5px;
+  color: rgba(199,154,75,0.90);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease,
+              transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+.btn-gold:hover {
+  background: rgba(199,154,75,0.08);
+  border-color: rgba(199,154,75,0.55);
+  color: rgba(199,154,75,1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 24px rgba(199,154,75,0.10);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(240,237,227,0.10);
+  border-radius: 5px;
+  color: rgba(158,149,135,0.80);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  color: #F0EDE3;
+  border-color: rgba(240,237,227,0.22);
+  transform: translateY(-1px);
+}
+
+/* ─── Tags ───────────────────────────────────────────── */
+.tag-gold {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(199,154,75,0.20);
+  color: rgba(199,154,75,0.75);
+  background: rgba(199,154,75,0.05);
+  white-space: nowrap;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.tag-gold:hover {
+  border-color: rgba(199,154,75,0.45);
+  color: rgba(199,154,75,0.95);
+  transform: translateY(-1px);
+}
+
+.tag-neutral {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(240,237,227,0.08);
+  color: rgba(158,149,135,0.8);
+  background: rgba(240,237,227,0.03);
+  white-space: nowrap;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.tag-neutral:hover {
+  border-color: rgba(199,154,75,0.25);
+  color: rgba(199,154,75,0.85);
+  transform: translateY(-1px);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: #050505; }
+::-webkit-scrollbar-thumb  { background: #1C1A16; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(199,154,75,0.30); }
+
+/* ─── Selection ──────────────────────────────────────── */
+::selection { background: rgba(199,154,75,0.20); color: #F0EDE3; }
+
+/* ─── Focus ──────────────────────────────────────────── */
+:focus-visible { outline: 1px solid rgba(199,154,75,0.50); outline-offset: 3px; }
+
+/* ─── Reduced motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
