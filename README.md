@@ -48,8 +48,30 @@ Other scripts: `npm run build` (production build), `npm run start` (serve build)
 
 ## Configuration
 
-No environment variables are required to run the site. See [`.env.example`](.env.example) for
-placeholders reserved for future use (analytics, contact form).
+No environment variables are required to run the site. The only optional one is
+`NEXT_PUBLIC_SITE_URL`, the canonical URL used for metadata, Open Graph tags, the sitemap and
+`robots`. It is resolved in [`lib/site.js`](lib/site.js) as:
+
+1. `NEXT_PUBLIC_SITE_URL` — explicit override (set this once you have a custom domain)
+2. `VERCEL_PROJECT_PRODUCTION_URL` — injected automatically by Vercel for production deploys
+3. `https://jcg.dev` — fallback
+
+See [`.env.example`](.env.example) for details.
+
+## Deploy
+
+The site is a zero-config Next.js app and deploys to **[Vercel](https://vercel.com)** (free Hobby
+tier — no card required for personal use):
+
+1. Sign in to Vercel **with GitHub**.
+2. **Add New… → Project**, then import this repository.
+3. Vercel auto-detects Next.js — keep the defaults and click **Deploy**.
+
+Every push to `main` redeploys automatically. The canonical URL resolves to the deployment URL out
+of the box; set `NEXT_PUBLIC_SITE_URL` in the project's environment variables once a custom domain is
+connected.
+
+Other zero-config hosts that work the same way: **Cloudflare Pages**, **Netlify**.
 
 ## Design
 
