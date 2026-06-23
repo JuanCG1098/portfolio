@@ -3,6 +3,8 @@
 Dark, editorial single-page portfolio for **Juan Cruz Gallardo** — full-stack developer (.NET
 backend + Flutter) — built to showcase production-grade work for remote opportunities.
 
+**Live:** https://portfolio-mauve-zeta-u6l8t16z27.vercel.app
+
 **Author:** [Juan Cruz Gallardo](https://github.com/JuanCG1098) · juancgallardo1098@gmail.com
 
 ## Stack
