@@ -7,6 +7,7 @@ import About         from './components/About';
 import TechStack     from './components/TechStack';
 import Experience    from './components/Experience';
 import CaseStudies   from './components/CaseStudies';
+import Projects      from './components/Projects';
 import Architecture  from './components/Architecture';
 import Values        from './components/Values';
 import Contact       from './components/Contact';
@@ -24,6 +25,7 @@ export default function Home() {
       <TechStack />
       <Experience />
       <CaseStudies />
+      <Projects />
       <Architecture />
       <Values />
       <Contact />

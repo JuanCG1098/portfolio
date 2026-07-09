@@ -17,7 +17,8 @@ function StatNumber({ value, suffix = '' }) {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-20px' });
   const reduce = useReducedMotion();
-  const [display, setDisplay] = useState(0);
+  // Server-render the final value so crawlers and link previews never see "0+"
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     if (!inView) return;
